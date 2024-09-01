@@ -2,3 +2,16 @@
     padding: 0;
     margin: 0;
 }
+
+body {
+    display: flex;
+    position: relative;
+}
+
+#mayara {
+    position: absolute;
+    width: 100px;
+    height: 100px;
+    left: 100px;
+    bottom: 300px;
+}
