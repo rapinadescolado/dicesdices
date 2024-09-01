@@ -19,13 +19,22 @@
     width: 100px;
     height: 100px;
     left: 100px;
-    bottom: 300px;
+    bottom: 0;
 }
 
 #calopsita {
     position: absolute;
     width: 100px;
     height: 100px;
-    left: 100px;
-    bottom: 300px;
+    bottom: 0;
+    animation: calopsita-animation 1.5s infinite linear;
+}
+
+@keyframes calopsita-animation {
+    from {
+        right: -100px;
+    }
+    to {
+        right: 100%;
+    }
 }
