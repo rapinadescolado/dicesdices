@@ -47,10 +47,20 @@ body {
     border: #272625 2px solid;
     border-radius: 2vw;
     font-weight: bold;
+    font-size: 2vw;
 }
 #rollButton:hover{
     scale: 1.1;
     border: #fff 2px solid;
+    animation: rollButtonRotation 1.5s ease-in-out infinite;
+}
+@keyframes rollButtonRotation {
+    from{
+        transform: rotate(0);
+    }
+    to {
+        transform: rotate(720deg);
+    }
 }
 
 
