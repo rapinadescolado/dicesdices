@@ -1,2 +1,3 @@
 const player = document.getElementsByClassName("playerSide")
-console.log(player)
+const oponent = document.getElementsByClassName("oponentSide")
+
