@@ -19,10 +19,11 @@
     grid-template: repeat(3, 100px) / repeat(3, 100px);
     width: 100px;
     height: 100px;
-    left: 50px;
+    margin: auto auto;
     bottom: 0;
 }
 
 .slot {
-    border: #272625 3px solid;
+    margin: 5px;
+    border: #272625 2px solid;
 }
