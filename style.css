@@ -5,7 +5,7 @@
 }
 
 body {
-    background-color: #333130;
+    background-color: #363331;
 }
 
 .game {
@@ -23,9 +23,9 @@ body {
 
 .board {
     display: grid;
-    grid-template: repeat(3, 80px) / repeat(3, 80px);
-    width: 240px;
-    height: 240px;
+    grid-template: repeat(3, 100px) / repeat(3, 100px);
+    width: 300px;
+    height: 300px;
 }
 
 .slot {
