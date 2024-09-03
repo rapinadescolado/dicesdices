@@ -32,3 +32,7 @@ body {
     margin: 5px;
     border: #272625 2px solid;
 }
+
+.slot:hover {
+    scale: 1.1;
+}
