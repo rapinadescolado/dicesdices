@@ -37,15 +37,20 @@ body {
     width: 20vw;
     height: 30vw;
     background-color: #696361;
+    border-radius: 2vw;
 }
 
 #rollButton {
     background-color: #eee7b6;
     width: 12vw;
     height: 12vw;
-    border: #272625 2px static;
+    border: #272625 2px solid;
     border-radius: 2vw;
     font-weight: bold;
+}
+#rollButton:hover{
+    scale: 1.1;
+    border: #fff 2px solid;
 }
 
 
