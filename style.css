@@ -28,11 +28,26 @@ body {
     height: 30vw;
 }
 
+
+
 #panel {
+    display: flex;
+    justify-content: center;
+    align-items: center;
     width: 20vw;
     height: 30vw;
     background-color: #696361;
 }
+
+#rollButton {
+    background-color: #eee7b6;
+    width: 12vw;
+    height: 12vw;
+    border: #272625 2px static;
+    border-radius: 2vw;
+}
+
+
 
 .slot {
     max-width: 10vw;
