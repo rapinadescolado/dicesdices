@@ -10,5 +10,5 @@ const rollButton = document.getElementById("rollButton")
 function roll () {
     let dado = Math.floor(Math.random()*6 + 1);
     rollButton.innerHTML = dado;
-    playerBoard.cima[1].src = "img/dado${dado}"
+    playerBoard.cima[1].src = "./img/dado${dado}.png"
 }
