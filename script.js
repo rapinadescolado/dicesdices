@@ -1,8 +1,12 @@
 // Definir as variaveis de acordo com o modo de jogo
 var gamemode;
 function start(modo) {
+    // MH: pq a necessidade do gamemode estar como 'undefined' aqui??
+    // MH: algum outro objeto/função modifica essa função para ser necessario que o gamemode esteja como undefined aqui??
     if(modo == 'pvp'  && gamemode == undefined) {
         gamemode = modo;
+
+        // MH: busque outra forma de animar a tela! Sem se apoiar no css, use apenas o javascript para animar a tela!
         document.getElementById("menu").style.animationPlayState = "running";
     }
     if (modo == 'bot'  && gamemode == undefined) {

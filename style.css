@@ -54,6 +54,14 @@ p, h1, button{
     font-size: 1.8vw;
     font-weight: 900;
 }
+
+/* 
+
+MH: Utilizar o Margin para animar pode ser perigoso, 
+com poucos elementos em tela ele funciona bem, porem com muitos elementos ele 
+pode se tornar um problema, procure sobre as propriedades do "transform"...
+
+*/
 @keyframes menu-items-animation {
     0% {
         margin: 0 2vw;
