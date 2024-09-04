@@ -31,34 +31,38 @@ p, h1, button{
 }
 #menu h1{
     font-size: 8vw;
+    -webkit-text-stroke: 0.3vw black;
+    color: white;
     animation: menu-items-animation 6s ease-in-out infinite;
 }
 #menu div button {
     width: 14vw;
     height: 7vw;
-    margin: 0 3vw;
     background-color: #eee7b6;
-    border: #272625 2px solid;
+    border: #272625 0.3vw solid;
     border-radius: 7vw;
     font-weight: 500;
-    font-size: 1.5vw;
+    font-size: 1.6vw;
     animation: menu-items-animation 6s ease-in-out infinite;
 }
 #menu div button:hover {
     scale: 1.1;
     background-color: #fff;
     border-color: #eee7b6;
-    font-weight: 600;
+    -webkit-text-stroke: 0.1vw black;
+    color: white;
+    font-size: 1.8vw;
+    font-weight: 900;
 }
 @keyframes menu-items-animation {
     0% {
-        margin: 0 3vw 0 0;
+        margin: 0 2vw;
     }
     50% {
-        margin: 4vw 3vw 0 0;
+        margin: 4vw 2vw;
     }
     100% {
-        margin: 0 3vw 0 0;
+        margin: 0 2vw;
     }
 }@keyframes menu-start-animation {
     from {
@@ -66,6 +70,7 @@ p, h1, button{
     }
     to {
         top: -100vh;
+        display: none;
     }
 }
 
@@ -88,16 +93,16 @@ p, h1, button{
 
 .board {
     display: grid;
-    grid-template: repeat(3, 10vw) / repeat(3, 10vw);
-    width: 30vw;
-    height: 30vw;
+    grid-template: repeat(3, 8vw) / repeat(3, 8vw);
+    width: 24vw;
+    height: 24vw;
 }
 
 .slot {
-    max-width: 9vw;
-    max-height: 9vw;
+    max-width: 7vw;
+    max-height: 7vw;
     margin: 0.5vw;
-    border: #272625 2px solid;
+    border: #272625 0.25vw solid;
 }
 .slot:hover {
     scale: 1.1;
@@ -111,7 +116,7 @@ p, h1, button{
     display: flex;
     justify-content: center;
     align-items: center;
-    width: 20vw;
+    width: 15vw;
     height: 30vw;
     background-color: #696361;
     border-radius: 2vw;
@@ -121,7 +126,7 @@ p, h1, button{
     background-color: #eee7b6;
     width: 12vw;
     height: 12vw;
-    border: #272625 2px solid;
+    border: #272625 0.4vw solid;
     border-radius: 2vw;
     font-weight: bold;
     font-size: 2vw;
