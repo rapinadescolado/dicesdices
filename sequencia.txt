@@ -1,0 +1,10 @@
+0. refazer tabela
+1. identificar jogador
+2. rolar dado
+3. seleciona qual coluna vai colocar o dado
+4. checar se a coluna tem espaço
+5. verifica os valores da coluna
+6. se existir algum valor que resultara em uma modificação, fazer os calculos
+7. checar coluna correspondente do oponente e tirar dados equivalentes
+8. fazer a soma final
+9. passar o turno
