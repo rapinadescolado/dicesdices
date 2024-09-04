@@ -1,5 +1,10 @@
-// Definir as variaveis de acordo com o modo de jogo
+// Declarar váriaveis
 var gamemode;
+var turn;
+var moveawait;
+
+
+// Definir as variaveis de acordo com o modo de jogo
 function start(modo) {
     // MH: pq a necessidade do gamemode estar como 'undefined' aqui??
     // MH: algum outro objeto/função modifica essa função para ser necessario que o gamemode esteja como undefined aqui??
@@ -14,6 +19,7 @@ function start(modo) {
     }
 }
 
+
 // Variaveis dos tabuleiros e function pra retornar slots
 const leftSide = document.getElementById("leftSide");
 const rightSide = document.getElementById("leftSide");
@@ -23,9 +29,4 @@ function getSlot(board,number) {
     let id = `${board}Side`;
     let slot = number - 1;
     return document.getElementById(id).getElementsByClassName("slot")[slot];
-}
-
-// Iniciar jogo. Modo: Dois jogadores
-if (gamemode == "pvp") {
-    
 }
