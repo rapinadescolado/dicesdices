@@ -1,25 +1,33 @@
 // Declarar váriaveis
-var gamemode;
-var turn;
-var moveawait;
+var gamemode; // Serve para definir qual vai ser o codigo de jogo usado
+var turn; // Define quem está jogando, os valores podem ser "left" ou "right"
+var moveawait; // Define o movimento q ta esperando q o jogador no turn atual faça. // "roll" para jogar dado. "select" para selecionar slot
+const leftSide = document.getElementById("leftSide");
+const leftPlayer = document.getElementById("leftPlayer");
+const rightSide = document.getElementById("rightSide");
+const rightPlayer = document.getElementById("rightPlayer");
+var leftPointsTotal = 0;    // Pontos totais (soma dos pontos de cada linha)
+var leftPointsMap = [0,0,0,0,0,0,0,0,0];  // Pontos de cada slot separado certinho
+var rightPointsTotal = 0;
+var rightPointsMap = [0,0,0,0,0,0,0,0,0];
+var dadoAtual; // Dado que tirou no teste
+
+
 
 
 // Definir as variaveis de acordo com o modo de jogo
 function start(modo) {
+    let menu = document.getElementById("menu");
 
-    // MH: pq a necessidade do gamemode estar como 'undefined' aqui??
-        // RV: coloquei pra ele precisar estar undefined pra n ter a possibilidade da pessoa apertar um botao de menu depois de ter apertado o outro enquanto o menu sobe, pq senao buga tudo
-    // MH: algum outro objeto/função modifica essa função para ser necessario que o gamemode esteja como undefined aqui??
-        // RV: sim, quando a pessoa escolhe o modo de jogo la pelos botoes do menu, o gamemode altera seu valor pra esse modo de jogo escolhido
-    
     if(modo == 'pvp'  && gamemode == undefined) {
         gamemode = modo;
         turn = "left";
-        // MH: busque outra forma de animar a tela! Sem se apoiar no css, use apenas o javascript para animar a tela!
-            // RV: Eu acho q é assim, ta certo?
-
-        document.getElementById("menu").style.top = "-100vh";
+        menu.style.top = "-100vh";
+        setTimeout(() => {
+            menu.style.display = "none";
+        }, 1000);
     }
+
     if (modo == 'bot'  && gamemode == undefined) {
         // fazer mais tarde
     }
@@ -28,30 +36,25 @@ function start(modo) {
 
 
 
-
-// Variaveis dos tabuleiros e function pra retornar slots
+// Function pra retornar slots e function para calcular pontos
 function getSlot(side,number) {
     let id = `${side}Side`;
     let slot = number - 1;
-    return document.getElementById(id).getElementsByClassName("slot")[slot];
+    let response = {
+        "button": document.getElementById(id).getElementsByClassName("slot")[slot],
+        "img": document.getElementById(id).getElementsByClassName("slot")[slot].firstChild
+    };
+    return response;
 }
+function calcPoints(side) {
+    if (side = "left") {
+        let cima = leftPointsMap[0] + leftPointsMap[1] + leftPointsMap[2];
+        let meio = leftPointsMap[3] + leftPointsMap[4] + leftPointsMap[5];
+        let baixo = leftPointsMap[6] + leftPointsMap[7] + leftPointsMap[8];
 
-const leftSide = document.getElementById("leftSide");
-const leftPlayer = document.getElementById("leftPlayer");
-var leftSideMap = {
-    "cima": [getSlot("left", 1), getSlot("left", 2), getSlot("left", 3)],
-    "meio": [getSlot("left", 4), getSlot("left", 5), getSlot("left", 6)],
-    "baixo": [getSlot("left", 7), getSlot("left", 8), getSlot("left", 9)]
+        leftPointsTotal = cima + meio + baixo;
+    }
 }
-
-const rightSide = document.getElementById("rightSide");
-const rightPlayer = document.getElementById("rightPlayer");
-var rightSideMap = {
-    "cima": [getSlot("right", 1), getSlot("right", 2), getSlot("right", 3)],
-    "meio": [getSlot("right", 4), getSlot("right", 5), getSlot("right", 6)],
-    "baixo": [getSlot("right", 7), getSlot("right", 8), getSlot("right", 9)]
-}
-
 
 
 
@@ -60,7 +63,7 @@ var rightSideMap = {
 function roll() {
     if (moveawait = "roll") {
 
-        let dado = Math.floor(Math.random()*6 + 1);
+        dadoAtual = Math.floor(Math.random()*6 + 1);
         let button = document.getElementById("rollButton");
         let result = document.getElementById("result");
         button.style.transform = "rotate(720deg)";
@@ -68,9 +71,39 @@ function roll() {
         setTimeout(()=>{
             button.style.display = "none";
             result.style.display = "block";
-            result.src = `img/dado${dado}.png`;
-            moveawait = "select"
+            result.src = `img/dado${dadoAtual}.png`;
+            moveawait = "select";
         }, 2000)
 
+    }
+}
+function selectSlot(side, number) {
+    if (moveawait == "select" && side == turn) {
+
+        // Calcular pontos e colocar imagem de dado no slot
+        if (side == "left") {
+            leftPointsMap[(number - 1)] = dadoAtual;
+        }else{
+            rightPointsMap[(number - 1)] = dadoAtual;
+        }
+        calcPoints(side)
+        getSlot(side, number).img.src = `img/dado${dadoAtual}.png`;
+
+        // Resetar o botão de dado
+        let button = document.getElementById("rollButton");
+        let result = document.getElementById("result");
+        button.style.display = "block";
+        button.style.transform = "rotate(0)";
+        button.innerHTML = "ROLAR DADO";
+        result.style.display = "none";
+
+        // Passar turno
+        moveawait = "roll";
+        if (side == "left") {
+            turn = "right";
+        }else{
+            turn = "left";
+        }
+        console.log(leftPointsTotal + "and" + rightPointsTotal)
     }
 }
