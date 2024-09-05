@@ -19,16 +19,17 @@ p, h1, button{
 /* - - - - - MENU - - - - - */
 
 #menu {
-    position:fixed;
+    position: fixed;
     display: flex;
     flex-direction: column;
     justify-content: space-evenly;
     align-items: center;
     width: 100vw;
     height: 100vh;
+    top: 0;
     background-color: #696361;
     z-index: 50;
-    animation: menu-start-animation 0.5s ease-in paused forwards;
+    transition: 0.7s;
 }
 #menu h1{
     font-size: 8vw;
@@ -42,6 +43,7 @@ p, h1, button{
     background-color: #eee7b6;
     border: #272625 0.3vw solid;
     border-radius: 7vw;
+    margin: 0 2vw;
     font-weight: 500;
     font-size: 1.6vw;
     animation: menu-items-animation 6s ease-in-out infinite;
@@ -62,24 +64,18 @@ MH: Utilizar o Margin para animar pode ser perigoso,
 com poucos elementos em tela ele funciona bem, porem com muitos elementos ele 
 pode se tornar um problema, procure sobre as propriedades do "transform"...
 
+RV: Assim? 
+
 */
 @keyframes menu-items-animation {
     0% {
-        margin: 0 2vw;
+        transform: translateY(0);
     }
     50% {
-        margin: 4vw 2vw;
+        transform: translateY(-3vw);
     }
     100% {
-        margin: 0 2vw;
-    }
-}@keyframes menu-start-animation {
-    from {
-        top: 0;
-    }
-    to {
-        top: -100vh;
-        display: none;
+        transform: translateY(0);
     }
 }
 
