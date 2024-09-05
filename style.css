@@ -29,7 +29,7 @@ p, h1, button{
     top: 0;
     background-color: #696361;
     z-index: 50;
-    transition: 0.7s;
+    transition: top 0.7s;
 }
 #menu h1{
     font-size: 8vw;
@@ -104,6 +104,7 @@ RV: Assim?
 }
 
 .slot {
+    background-color: transparent;
     max-width: 7vw;
     max-height: 7vw;
     margin: 0.5vw;
@@ -111,6 +112,9 @@ RV: Assim?
 }
 .slot:hover {
     scale: 1.1;
+}
+.slot img {
+    max-width: 6.5vw;
 }
 
 
@@ -135,17 +139,26 @@ RV: Assim?
     border-radius: 2vw;
     font-weight: bold;
     font-size: 2vw;
+    transform: rotate(0);
+    transition: transform 2s;
 }
 #rollButton:hover{
     scale: 1.2;
     border-color: #fff;
-    animation: rollButtonRotation 1.5s ease-in-out infinite paused;
+    /* animation: rollButtonRotation 1.5s ease-in-out infinite paused; */
 }
-@keyframes rollButtonRotation {
+/* @keyframes rollButtonRotation {
     from{
         transform: rotate(0);
     }
     to {
         transform: rotate(720deg);
     }
+} */
+#result {
+    display: none;
+    background-color: #eee7b6;
+    width: 10vw;
+    height: 10vw;
+    border-radius: 1.4vw;
 }

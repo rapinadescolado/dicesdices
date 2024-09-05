@@ -19,31 +19,32 @@
     <div class="game">
         <img id="leftPlayer" src="">
         <div class="board" id="leftSide">
-            <img class="slot" id="slot1" src="">
-            <img class="slot" id="slot2" src="">
-            <img class="slot" id="slot3" src="">
-            <img class="slot" id="slot4" src="">
-            <img class="slot" id="slot5" src="">
-            <img class="slot" id="slot6" src="">
-            <img class="slot" id="slot7" src="">
-            <img class="slot" id="slot8" src="">
-            <img class="slot" id="slot9" src="">
+            <button class="slot" id="slot1" onclick="selectSlot('left', 1)"><img></button>
+            <button class="slot" id="slot2" onclick="selectSlot('left', 2)"><img></button>
+            <button class="slot" id="slot3" onclick="selectSlot('left', 3)"><img></button>
+            <button class="slot" id="slot4" onclick="selectSlot('left', 4)"><img></button>
+            <button class="slot" id="slot5" onclick="selectSlot('left', 5)"><img></button>
+            <button class="slot" id="slot6" onclick="selectSlot('left', 6)"><img></button>
+            <button class="slot" id="slot7" onclick="selectSlot('left', 7)"><img></button>
+            <button class="slot" id="slot8" onclick="selectSlot('left', 8)"><img></button>
+            <button class="slot" id="slot9" onclick="selectSlot('left', 9)"><img></button>
         </div>
 
         <div id="panel">
+            <img id="result" src="">
             <button id="rollButton" onclick="roll()">ROLAR DADO</button>
         </div>
 
         <div class="board" id="rightSide">
-            <img class="slot" id="slot1" src="">
-            <img class="slot" id="slot2" src="">
-            <img class="slot" id="slot3" src="">
-            <img class="slot" id="slot4" src="">
-            <img class="slot" id="slot5" src="">
-            <img class="slot" id="slot6" src="">
-            <img class="slot" id="slot7" src="">
-            <img class="slot" id="slot8" src="">
-            <img class="slot" id="slot9" src="">
+            <button class="slot" id="slot1" onclick="selectSlot('right', 1)"><img></button>
+            <button class="slot" id="slot2" onclick="selectSlot('right', 2)"><img></button>
+            <button class="slot" id="slot3" onclick="selectSlot('right', 3)"><img></button>
+            <button class="slot" id="slot4" onclick="selectSlot('right', 4)"><img></button>
+            <button class="slot" id="slot5" onclick="selectSlot('right', 5)"><img></button>
+            <button class="slot" id="slot6" onclick="selectSlot('right', 6)"><img></button>
+            <button class="slot" id="slot7" onclick="selectSlot('right', 7)"><img></button>
+            <button class="slot" id="slot8" onclick="selectSlot('right', 8)"><img></button>
+            <button class="slot" id="slot9" onclick="selectSlot('right', 9)"><img></button>
         </div>
         <img id="rightPlayer" src="">
     </div>
