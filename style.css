@@ -57,16 +57,6 @@ p, h1, button{
     font-size: 1.8vw;
     font-weight: 900;
 }
-
-/* 
-
-MH: Utilizar o Margin para animar pode ser perigoso, 
-com poucos elementos em tela ele funciona bem, porem com muitos elementos ele 
-pode se tornar um problema, procure sobre as propriedades do "transform"...
-
-RV: Assim? 
-
-*/
 @keyframes menu-items-animation {
     0% {
         transform: translateY(0);
@@ -97,25 +87,71 @@ RV: Assim?
 }
 
 .board {
-    display: grid;
-    grid-template: repeat(3, 8vw) / repeat(3, 8vw);
+    display: flex;
+    flex-wrap: wrap;
     width: 24vw;
     height: 24vw;
 }
 
+.line {
+    position: relative;
+    display: flex;
+    flex-direction: row;
+}
+.line.right {
+    flex-direction: row-reverse;
+}
+
 .slot {
     background-color: transparent;
-    max-width: 7vw;
-    max-height: 7vw;
+    width: 7vw;
+    height: 7vw;
     margin: 0.5vw;
-    border: #272625 0.2vw solid;
+    border: #4e371f 0.2vw solid;
 }
 .slot:hover {
-    scale: 1.1;
+    scale: 1.05;
 }
 .slot img {
     margin: 0.2vw;
     max-width: 6.2vw;
+}
+
+.left .selectIcon {
+    display: none;
+    position: absolute;
+    left: -8vw;
+    width: 7vw;
+    height: 7vw;
+    animation: selecticon-animation-left 1s ease-in-out alternate infinite;
+}
+.right .selectIcon {
+    display: none;
+    position: absolute;
+    left: 25vw;
+    width: 7vw;
+    height: 7vw;
+    transform: scaleX(-1);
+    animation: selecticon-animation-right 1s ease-in-out alternate infinite;
+}
+.line:hover .selectIcon {
+    display: block;
+}
+@keyframes selecticon-animation-left {
+    from {
+        left: -8vw;
+    }
+    to {
+        left: -10vw;
+    }
+}
+@keyframes selecticon-animation-right {
+    from {
+        left: 25vw;
+    }
+    to {
+        left: 27vw;
+    }
 }
 
 
@@ -146,16 +182,7 @@ RV: Assim?
 #rollButton:hover{
     scale: 1.2;
     border-color: #fff;
-    /* animation: rollButtonRotation 1.5s ease-in-out infinite paused; */
 }
-/* @keyframes rollButtonRotation {
-    from{
-        transform: rotate(0);
-    }
-    to {
-        transform: rotate(720deg);
-    }
-} */
 #result {
     display: none;
     background-color: #eee7b6;

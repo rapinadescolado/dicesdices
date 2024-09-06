@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>joguin dos dado hahah</title>
     <link rel="stylesheet" href="style.css">
-    <script src="script.js"></script>
+    <script src="script.js" defer></script>
 </head>
 <body>
     <div id="menu">
@@ -19,15 +19,24 @@
     <div class="game">
         <img id="leftPlayer" src="">
         <div class="board" id="leftSide">
-            <button class="slot" id="slot1" onclick="selectSlot('left', 1)"><img></button>
-            <button class="slot" id="slot2" onclick="selectSlot('left', 2)"><img></button>
-            <button class="slot" id="slot3" onclick="selectSlot('left', 3)"><img></button>
-            <button class="slot" id="slot4" onclick="selectSlot('left', 4)"><img></button>
-            <button class="slot" id="slot5" onclick="selectSlot('left', 5)"><img></button>
-            <button class="slot" id="slot6" onclick="selectSlot('left', 6)"><img></button>
-            <button class="slot" id="slot7" onclick="selectSlot('left', 7)"><img></button>
-            <button class="slot" id="slot8" onclick="selectSlot('left', 8)"><img></button>
-            <button class="slot" id="slot9" onclick="selectSlot('left', 9)"><img></button>
+            <div class="line left" onclick="selectLine(0)">
+                <button class="slot"><img></button>
+                <button class="slot"><img></button>
+                <button class="slot"><img></button>
+                <img class="selectIcon" src="img/hand.png">
+            </div>
+            <div class="line left" onclick="selectLine(1)">
+                <button class="slot"><img></button>
+                <button class="slot"><img></button>
+                <button class="slot"><img></button>
+                <img class="selectIcon" src="img/hand.png">
+            </div>
+            <div class="line left" onclick="selectLine(2)">
+                <button class="slot"><img></button>
+                <button class="slot"><img></button>
+                <button class="slot"><img></button>
+                <img class="selectIcon" src="img/hand.png">
+            </div>
         </div>
 
         <div id="panel">
@@ -36,15 +45,24 @@
         </div>
 
         <div class="board" id="rightSide">
-            <button class="slot" id="slot1" onclick="selectSlot('right', 1)"><img></button>
-            <button class="slot" id="slot2" onclick="selectSlot('right', 2)"><img></button>
-            <button class="slot" id="slot3" onclick="selectSlot('right', 3)"><img></button>
-            <button class="slot" id="slot4" onclick="selectSlot('right', 4)"><img></button>
-            <button class="slot" id="slot5" onclick="selectSlot('right', 5)"><img></button>
-            <button class="slot" id="slot6" onclick="selectSlot('right', 6)"><img></button>
-            <button class="slot" id="slot7" onclick="selectSlot('right', 7)"><img></button>
-            <button class="slot" id="slot8" onclick="selectSlot('right', 8)"><img></button>
-            <button class="slot" id="slot9" onclick="selectSlot('right', 9)"><img></button>
+            <div class="line right" onclick="selectLine(0)">
+                <button class="slot"><img></button>
+                <button class="slot"><img></button>
+                <button class="slot"><img></button>
+                <img class="selectIcon" src="img/hand.png">
+            </div>
+            <div class="line right" onclick="selectLine(1)">
+                <button class="slot"><img></button>
+                <button class="slot"><img></button>
+                <button class="slot"><img></button>
+                <img class="selectIcon" src="img/hand.png">
+            </div>
+            <div class="line right" onclick="selectLine(2)">
+                <button class="slot"><img></button>
+                <button class="slot"><img></button>
+                <button class="slot"><img></button>
+                <img class="selectIcon" src="img/hand.png">
+            </div>
         </div>
         <img id="rightPlayer" src="">
     </div>
