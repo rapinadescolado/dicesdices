@@ -95,7 +95,7 @@ function roll() {
             result.style.display = "block";
             result.src = `img/dado${dadoAtual}.png`;
             moveawait = "select";
-        }, 2000)
+        }, 1500)
 
     }
 }
@@ -145,6 +145,9 @@ function selectLine(line) {
 
         // Atualizar variaveis
         leftPointsMap[lineNumber].slots = pointMap;
+
+        // Passar Turno
+        
     }
 }
 

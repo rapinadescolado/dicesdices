@@ -1,3 +1,13 @@
+/* - - - - - CORES - - - - - */
+:root {
+    --fundoescuro: #211d1b;
+    --fundomedio: #40332b;
+    --fundoclaro: #694f3f;
+    --divs: #deae57;
+}
+
+
+
 @import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap');
 
 * {
@@ -8,7 +18,7 @@
 }
 
 body {
-    background-color: #363331;
+    background-color: var(--fundoescuro);
 }
 p, h1, button{
     font-family: "Roboto", sans-serif;
@@ -30,21 +40,21 @@ p, h1, button{
     width: 100vw;
     height: 100vh;
     top: 0;
-    background-color: #696361;
+    background-color: var(--fundomedio);
     z-index: 50;
     transition: 0.7s top;
 }
 #menu h1{
     font-size: 8vw;
-    -webkit-text-stroke: 0.3vw black;
+    -webkit-text-stroke: 0.3vw var(--fundoescuro);
     color: white;
     animation: menu-items-animation 6s ease-in-out infinite;
 }
 #menu div button {
     width: 14vw;
     height: 7vw;
-    background-color: #eee7b6;
-    border: #272625 0.3vw solid;
+    background-color: var(--divs);
+    border: var(--fundoescuro) 0.3vw solid;
     border-radius: 7vw;
     margin: 0 2vw;
     font-weight: 500;
@@ -54,8 +64,8 @@ p, h1, button{
 #menu div button:hover {
     scale: 1.1;
     background-color: #fff;
-    border-color: #eee7b6;
-    -webkit-text-stroke: 0.1vw black;
+    border-color: var(--divs);
+    -webkit-text-stroke: 0.1vw var(--fundoescuro);
     color: white;
     font-size: 1.8vw;
     font-weight: 900;
@@ -85,7 +95,7 @@ p, h1, button{
     width: 100%;
     height: 90vh;
     margin: 0 auto;
-    background-color: #9c8e8a;
+    background-color: var(--fundoclaro);
     overflow: hidden;
 }
 
@@ -110,7 +120,7 @@ p, h1, button{
     width: 7vw;
     height: 7vw;
     margin: 0.5vw;
-    border: #4e371f 0.2vw solid;
+    border: var(--fundoescuro) 0.2vw solid;
 }
 .slot:hover {
     scale: 1.05;
@@ -167,20 +177,20 @@ p, h1, button{
     align-items: center;
     width: 15vw;
     height: 30vw;
-    background-color: #696361;
+    background-color: var(--fundomedio);
     border-radius: 2vw;
 }
 
 #rollButton {
-    background-color: #eee7b6;
+    background-color: var(--divs);
     width: 10vw;
     height: 10vw;
-    border: #272625 0.15vw solid;
+    border: var(--fundoescuro) 0.15vw solid;
     border-radius: 1.4vw;
     font-weight: bold;
     font-size: 2vw;
     transform: rotate(0);
-    transition: transform 2s;
+    transition: transform 1.5s;
 }
 #rollButton:hover{
     scale: 1.2;
@@ -188,7 +198,7 @@ p, h1, button{
 }
 #result {
     display: none;
-    background-color: #eee7b6;
+    background-color: var(--divs);
     width: 10vw;
     height: 10vw;
     border-radius: 1.4vw;
