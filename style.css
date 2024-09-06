@@ -15,6 +15,9 @@ p, h1, button{
 }
 
 
+/* EVITE USAR VW PARA DEFINIR TAMANHO DE HEIGHT... height se define com VH */
+/* tudo que é medido na vertical se usa VH, e tudo que for medido na horizontal é VW */
+
 
 /* - - - - - MENU - - - - - */
 
