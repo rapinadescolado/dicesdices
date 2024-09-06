@@ -1,5 +1,6 @@
 // MH: IMPORTANTE!!! defina um padrão para declarar suas variaveis, ou declara em portugues ou em ingles.... tu ta fazendo salada declarando hora em portugues hora em ingles.
 
+
 // Declarar váriaveis
 var gamemode; // Serve para definir qual vai ser o codigo de jogo usado
 var turn; // Define quem está jogando, os valores podem ser "left" ou "right"
@@ -7,7 +8,7 @@ var moveawait; // Define o movimento q ta esperando q o jogador no turn atual fa
 var dadoAtual; // Dado que tirou no teste
 
 
-// MH: Acho q antes de continuar as funções de calculo de dados e etc etc... faça a entrada dos players...
+//MH: Acho q antes de continuar as funções de calculo de dados e etc etc... faça a entrada dos players...
 // novamente vc ta colocando o carro na frente dos bois... olha o arquivo 'sequencia.txt'... vc pulou o item 1
 // que é identificar os jogadores.. faça a parte de identificação de jogadores... e ajuste as outras funções com base nisso
 // e não com esquerda e direita... Entendo sua decisão de esquerda e direita, pois é oq faz mais sentido com o visual que você tem atualmente
@@ -28,12 +29,12 @@ var rightPointsMap = [ {"slots":[0,0,0]},{"slots":[0,0,0]},{"slots":[0,0,0]} ];
 function start(modo) {
     let menu = document.getElementById("menu");
 
-    // MH: olha ainda acho desnecessario essa validação de gamemode 'undefined' 
+    //MH: olha ainda acho desnecessario essa validação de gamemode 'undefined' 
     // pq a animação da tela subindo acontece muito rapido, rapido o suficiente 
     // para n permitir o jogador clicar nos dois btns ao mesmo tempo.
     if(modo == 'pvp' && gamemode == undefined) {
 
-        // MH: reorganize as ordens dessas variaveis, hora vc está falando do menu, 
+        //MH: reorganize as ordens dessas variaveis, hora vc está falando do menu, 
         // hora falando do jogo... siga um padrão logico, primeiro estabeleça oq precisa
         // para a animação do menu acontecer, dps estabeleça as variaveis que serão utilizadas no jogo.
         
@@ -45,7 +46,7 @@ function start(modo) {
             menu.style.display = "none";
         }, 1000);
 
-        // MH: Na variavel 'Turn' acima, acredito que vc precisará criar um if e um else ou um 
+        //MH: Na variavel 'Turn' acima, acredito que vc precisará criar um if e um else ou um 
         // ternario para definir quem é o player da rodada, e reforço, passe a utilizar 'player1' e 'player2'
         // e não left e right.
     }
@@ -152,8 +153,14 @@ function selectLine(line) {
 }
 
 //MH: considerações finais... entendo suas escolhas para uso de Arrays e maps... 
-//mas tente não utilizalas por agora, pegue elemento por elemento da forma mais crua possivel...
-//acho que você está complicando seu codigo de formas que está fincando até complicado de ler... 
-//está refenciando coisas que pingam de um lado para o outro, quando não havia a extrema necessidade para tal
-//evite o uso de funções externas para executar coisas q poderiam muito bem ser feitas dentro de uma unica função..
-//por exemplo, a criação da função 'getSlot' é desnecessaria... 
+// mas tente não utilizalas por agora, domine a forma primordial de lidar com elementos, pegue elemento por 
+// elemento da forma mais crua possivel... com 'getElementById' ou 'getElementsByClassName'...
+
+//Acho que você está complicando seu codigo de formas que está fincando até complicado de ler... 
+// está refenciando coisas que pingam de um lado para o outro, quando não havia a extrema necessidade para tal
+// evite o uso de funções externas para executar coisas q poderiam muito bem ser feitas dentro de uma unica função..
+// por exemplo, a criação da função 'getSlot' é desnecessaria... tudo poderia ser executado dentro de 'selectLine'
+
+//Acho q mais uma vez vc vai precisar reanalisar tudo... siga o roteiro do 'sequencia.txt' e não coloque os pés pela cabeça...
+// faça com que o menu esteja fncionando 100% dps disso defina a função que vai estabelecer quem são os jogadores...
+// depooois de tudo isso setado... ai sim vc cria o dado e todas as suas funções e etc etc etc
