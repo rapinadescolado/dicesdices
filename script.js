@@ -1,66 +1,53 @@
-// MH: IMPORTANTE!!! defina um padrão para declarar suas variaveis, ou declara em portugues ou em ingles.... tu ta fazendo salada declarando hora em portugues hora em ingles.
-
-
 // Declarar váriaveis
 var gamemode; // Serve para definir qual vai ser o codigo de jogo usado
-var turn; // Define quem está jogando, os valores podem ser "left" ou "right"
+var turn; // Define quem está jogando, os valores podem ser "1" ou "2"
 var moveawait; // Define o movimento q ta esperando q o jogador no turn atual faça. // "roll" para jogar dado. "select" para selecionar slot
-var dadoAtual; // Dado que tirou no teste
+var dice; // Dado que tirou no teste
 
+var player1Name;
+const player1Board = document.getElementById("board1");
+const player1Char = document.getElementById("player1");
+var player2Name;
+const player2Board = document.getElementById("board2");
+const player2Char = document.getElementById("player2");
 
-//MH: Acho q antes de continuar as funções de calculo de dados e etc etc... faça a entrada dos players...
-// novamente vc ta colocando o carro na frente dos bois... olha o arquivo 'sequencia.txt'... vc pulou o item 1
-// que é identificar os jogadores.. faça a parte de identificação de jogadores... e ajuste as outras funções com base nisso
-// e não com esquerda e direita... Entendo sua decisão de esquerda e direita, pois é oq faz mais sentido com o visual que você tem atualmente
-// mas acho q seria melhor começar a definir como 'player1' e 'player2'...
-
-const leftSide = document.getElementById("leftSide");
-const leftPlayer = document.getElementById("leftPlayer");
-const rightSide = document.getElementById("rightSide");
-const rightPlayer = document.getElementById("rightPlayer");
-
-var leftPointsTotal = 0;    // PointsTotal = Pontos totais(soma dos pontos de cada linha) // PointsMap = Pontos de cada slot separado certinho
-var leftPointsMap = [ {"slots":[0,0,0]},{"slots":[0,0,0]},{"slots":[0,0,0]} ];
-var rightPointsTotal = 0;
-var rightPointsMap = [ {"slots":[0,0,0]},{"slots":[0,0,0]},{"slots":[0,0,0]} ];
+var player1PointsTotal = 0;    // PointsTotal = Pontos totais(soma dos pontos de cada linha) // PointsMap = Pontos de cada slot separado certinho
+var player1PointsMap = [ {"slots":[0,0,0]},{"slots":[0,0,0]},{"slots":[0,0,0]} ];
+var player2PointsTotal = 0;
+var player2PointsMap = [ {"slots":[0,0,0]},{"slots":[0,0,0]},{"slots":[0,0,0]} ];
 
 
 // Definir as variaveis de acordo com o modo de jogo
 function start(modo) {
     let menu = document.getElementById("menu");
+    let nicknames = document.getElementsByClassName("playerNickname")
 
-    //MH: olha ainda acho desnecessario essa validação de gamemode 'undefined' 
-    // pq a animação da tela subindo acontece muito rapido, rapido o suficiente 
-    // para n permitir o jogador clicar nos dois btns ao mesmo tempo.
-    if(modo == 'pvp' && gamemode == undefined) {
-
-        //MH: reorganize as ordens dessas variaveis, hora vc está falando do menu, 
-        // hora falando do jogo... siga um padrão logico, primeiro estabeleça oq precisa
-        // para a animação do menu acontecer, dps estabeleça as variaveis que serão utilizadas no jogo.
+    if(modo == 'pvp') {
+        // Input nome dos jogadores
+        player1Name = prompt("Digite o nome do jogador 1","");
+        player1Name = player1Name != "" ? player1Name : "Jogador 1";
+        player2Name = prompt("Digite o nome do jogador 2","");
+        player2Name = player2Name != "" ? player2Name : "Jogador 2";
+        nicknames[0].innerHTML = player1Name;
+        nicknames[1].innerHTML = player2Name;
         
+        // Setar variaveis do pvp
         gamemode = modo;
-        turn = "left";
-        moveawait = "roll"
+        turn = `${Math.floor(Math.random()*2 + 1)}`;
+        moveawait = "roll";
+        alert(`O primeiro turno será do ${nicknames[turn - 1].innerHTML}!`)
+        
+
+        // Subir Menu
         menu.style.top = "-100vh";
         setTimeout(() => {
             menu.style.display = "none";
         }, 1000);
-
-        //MH: Na variavel 'Turn' acima, acredito que vc precisará criar um if e um else ou um 
-        // ternario para definir quem é o player da rodada, e reforço, passe a utilizar 'player1' e 'player2'
-        // e não left e right.
     }
 
-    if (modo == 'bot'  && gamemode == undefined) {
+    if (modo == 'bot') {
         // fazer mais tarde
     }
-}
-
-
-
-
-function calcPoints(side) {
-    // vo fazer dps
 }
 
 //MH: TODAS ESSAS 3 funções abaixo devem estar dentro de uma função de jogador!... 
@@ -68,7 +55,7 @@ function calcPoints(side) {
 
 // Function pra retornar slots e function para calcular pontos
 function getSlot(side, line, number) {
-    side = `${side}Side`;
+    side = `board${side}`;
     line = line - 1;
     number = number - 1;
     let response = {
@@ -83,18 +70,12 @@ function getSlot(side, line, number) {
 function roll() {
     if (moveawait == "roll") {
 
-        //MH: nessa função de roll, vc não precisa dessa variavel 'result'... Pense um pouco...
-        // Dica: vc dentro do innerHTML vc pode colocar QUALQUER COISA... inclusive HTML...
-        
-        dadoAtual = Math.floor(Math.random()*6 + 1);
+        dice = Math.floor(Math.random()*6 + 1);
         let button = document.getElementById("rollButton");
-        let result = document.getElementById("result");
         button.style.transform = "rotate(720deg)";
-        button.innerHTML = ""
+        button.innerHTML = "";
         setTimeout(()=>{
-            button.style.display = "none";
-            result.style.display = "block";
-            result.src = `img/dado${dadoAtual}.png`;
+            button.innerHTML = `<img src="img/dado${dice}.png">`
             moveawait = "select";
         }, 1500)
 
@@ -107,50 +88,52 @@ function selectLine(line) {
         // Definir qual lado ta sendo usado e a line escolhida
         let lineNumber = line;
         let isFree = false;
-        if (turn == "left") {
-            pointMap = leftPointsMap[line].slots;
-            line = leftSide.children[line];
+        if (turn == "1") {
+            pointMap = player1PointsMap[line].slots;
+            line = player1Board.children[line];
         } else {
-            pointMap = rightPointsMap[line].slots;
-            line = rightSide.children[line];
+            pointMap = player2PointsMap[line].slots;
+            line = player2Board.children[line];
         }
 
         // Checar se tem espaço vazio na line e colocar dado na linha
         if (pointMap[2] == 0) {
             // Tem espaço no primeiro slot
-            getSlot(turn, lineNumber + 1, 3).img.src = `img/dado${dadoAtual}.png`;
-            pointMap[2] = dadoAtual;
+            getSlot(turn, lineNumber + 1, 3).img.src = `img/dado${dice}.png`;
+            pointMap[2] = dice;
             isFree = true;
         } else if (pointMap[1] == 0) {
             // Tem espaço no segundo slot
-            getSlot(turn, lineNumber + 1, 2).img.src = `img/dado${dadoAtual}.png`;
-            pointMap[1] = dadoAtual;
+            getSlot(turn, lineNumber + 1, 2).img.src = `img/dado${dice}.png`;
+            pointMap[1] = dice;
             isFree = true;
         } else if (pointMap[0] == 0) {
             // Tem espaço no terceiro slot
-            getSlot(turn, lineNumber + 1, 1).img.src = `img/dado${dadoAtual}.png`;
-            pointMap[0] = dadoAtual;
+            getSlot(turn, lineNumber + 1, 1).img.src = `img/dado${dice}.png`;
+            pointMap[0] = dice;
             isFree = true;
         } else {
             // Não tem espaço
-            getSlot(turn, lineNumber + 1, 1).line.style.outline = "0.1vw red solid";
+            getSlot(turn, lineNumber + 1, 1).line.style.outline = "0.2vw red solid";
             setTimeout(() => {
                 getSlot(turn, lineNumber + 1, 1).line.style.outline = "";
             }, 150);
         }
-
+        
         // Resetar botão de rolar e passar turno caso o dado tiver sido colocado
         if (isFree == true) {
             // to fazendo
         }
 
         // Atualizar variaveis
-        leftPointsMap[lineNumber].slots = pointMap;
+        player1PointsMap[lineNumber].slots = pointMap;
 
         // Passar Turno
         
     }
 }
+
+
 
 //MH: considerações finais... entendo suas escolhas para uso de Arrays e maps... 
 // mas tente não utilizalas por agora, domine a forma primordial de lidar com elementos, pegue elemento por 

@@ -1,10 +1,9 @@
-0. refazer tabela
-1. identificar jogador
-2. rolar dado
-3. seleciona qual coluna vai colocar o dado
-4. checar se a coluna tem espaço
-5. verifica os valores da coluna
-6. se existir algum valor que resultara em uma modificação, fazer os calculos
-7. checar coluna correspondente do oponente e tirar dados equivalentes
-8. fazer a soma final
+CHECK 0. refazer tabela
+CHECK 1. identificar jogador
+CHECK 2. rolar dado
+CHECK 3. seleciona qual linha vai colocar o dado
+CHECK 4. checar se a linha tem espaço
+5. atualiza os valores da linha e faz os calculos dos pontos
+6. checar linha correspondente do adversario e tirar dados equivalentes
+7. se a linha adversaria for alterada, atualizar a linha e recalcular os pontos dela
 9. passar o turno

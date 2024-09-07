@@ -17,61 +17,55 @@
     </div>
 
     <div class="game">
-        <img id="leftPlayer" src="">
-        <div class="board" id="leftSide">
-            <div class="line left" onclick="selectLine(0)">
-                <!-- 
-                
-                    De um id para cada um desses botoes e não utilize esse onclick no elemento pai...
-                    utilize uma função mestre para a escolha da coluna que o resultado do dado vai entrar 
-                    Ps: vc não vai precisar chamar ela aqui no front, da para se fazer tudo no JS.
-                
-                -->
-                <button class="slot"><img></button>
-                <button class="slot"><img></button>
-                <button class="slot"><img></button>
+        <img id="player1Char" src="">
+        <div class="board" id="board1">
+            <h2 class="playerNickname">...</h2>
+            <div class="line line1" onclick="selectLine(0)">
+                <div class="slot"><img></div>
+                <div class="slot"><img></div>
+                <div class="slot"><img></div>
                 <img class="selectIcon" src="img/hand.png">
             </div>
-            <div class="line left" onclick="selectLine(1)">
-                <button class="slot"><img></button>
-                <button class="slot"><img></button>
-                <button class="slot"><img></button>
+            <div class="line line1" onclick="selectLine(1)">
+                <div class="slot"><img></div>
+                <div class="slot"><img></div>
+                <div class="slot"><img></div>
                 <img class="selectIcon" src="img/hand.png">
             </div>
-            <div class="line left" onclick="selectLine(2)">
-                <button class="slot"><img></button>
-                <button class="slot"><img></button>
-                <button class="slot"><img></button>
+            <div class="line line1" onclick="selectLine(2)">
+                <div class="slot"><img></div>
+                <div class="slot"><img></div>
+                <div class="slot"><img></div>
                 <img class="selectIcon" src="img/hand.png">
             </div>
         </div>
 
         <div id="panel">
-            <img id="result" src="">
             <button id="rollButton" onclick="roll()">ROLAR DADO</button>
         </div>
 
-        <div class="board" id="rightSide">
-            <div class="line right" onclick="selectLine(0)">
-                <button class="slot"><img></button>
-                <button class="slot"><img></button>
-                <button class="slot"><img></button>
+        <div class="board" id="board2">
+            <h2 class="playerNickname">...</h2>
+            <div class="line line2" onclick="selectLine(0)">
+                <div class="slot"><img></div>
+                <div class="slot"><img></div>
+                <div class="slot"><img></div>
                 <img class="selectIcon" src="img/hand.png">
             </div>
-            <div class="line right" onclick="selectLine(1)">
-                <button class="slot"><img></button>
-                <button class="slot"><img></button>
-                <button class="slot"><img></button>
+            <div class="line line2" onclick="selectLine(1)">
+                <div class="slot"><img></div>
+                <div class="slot"><img></div>
+                <div class="slot"><img></div>
                 <img class="selectIcon" src="img/hand.png">
             </div>
-            <div class="line right" onclick="selectLine(2)">
-                <button class="slot"><img></button>
-                <button class="slot"><img></button>
-                <button class="slot"><img></button>
+            <div class="line line2" onclick="selectLine(2)">
+                <div class="slot"><img></div>
+                <div class="slot"><img></div>
+                <div class="slot"><img></div>
                 <img class="selectIcon" src="img/hand.png">
             </div>
         </div>
-        <img id="rightPlayer" src="">
+        <img id="player2Char" src="">
     </div>
 </body>
 </html>
